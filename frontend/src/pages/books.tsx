@@ -1,11 +1,7 @@
 import type { ComponentType } from 'react'
 import {
-  BookMarkedIcon,
   BookOpenIcon,
   ChevronDownIcon,
-  FeatherIcon,
-  FileTextIcon,
-  MapIcon,
   PlusIcon,
   SearchIcon,
 } from 'lucide-react'
@@ -46,7 +42,7 @@ const books: Book[] = [
     format: 'Puisi',
     date: '4 Feb 2025',
     pages: 184,
-    icon: FeatherIcon,
+    icon: BookOpenIcon,
   },
   {
     title: 'Kode Nusantara',
@@ -55,7 +51,7 @@ const books: Book[] = [
     format: 'Sejarah',
     date: '18 Feb 2025',
     pages: 312,
-    icon: BookMarkedIcon,
+    icon: BookOpenIcon,
   },
   {
     title: 'Notes from the North',
@@ -65,7 +61,7 @@ const books: Book[] = [
     format: 'Travel',
     date: '2 Mar 2025',
     pages: 208,
-    icon: MapIcon,
+    icon: BookOpenIcon,
   },
   {
     title: 'The Paper Atlas',
@@ -75,7 +71,7 @@ const books: Book[] = [
     format: 'Esai',
     date: '21 Mar 2025',
     pages: 208,
-    icon: FileTextIcon,
+    icon: BookOpenIcon,
   },
   {
     title: 'Merah di Ujung Senja',
@@ -93,7 +89,7 @@ const books: Book[] = [
     format: 'Esai',
     date: '27 Apr 2025',
     pages: 156,
-    icon: FileTextIcon,
+    icon: BookOpenIcon,
   },
   {
     title: 'Aroma Hujan',
@@ -102,7 +98,7 @@ const books: Book[] = [
     format: 'Memoar',
     date: '5 Mei 2025',
     pages: 232,
-    icon: FeatherIcon,
+    icon: BookOpenIcon,
   },
 ]
 
@@ -130,7 +126,7 @@ function BookCard({ book }: { book: Book }) {
 
       <div className="flex items-center justify-between border-t border-border/60 pt-3 text-[11px] text-muted-foreground">
         <span>{book.date}</span>
-        <span>{book.pages} hlm</span>
+        <span>{book.pages} pages</span>
       </div>
     </Card>
   )
@@ -176,16 +172,6 @@ export default function BooksPage() {
         {books.map((book) => (
           <BookCard key={book.title} book={book} />
         ))}
-
-        <button
-          type="button"
-          className="flex min-h-44 flex-col items-center justify-center gap-2 rounded-xl bg-card/40 text-muted-foreground ring-1 ring-foreground/10 transition-colors hover:bg-card hover:text-foreground"
-        >
-          <span className="flex size-9 items-center justify-center rounded-lg bg-muted">
-            <PlusIcon className="size-4" />
-          </span>
-          <span className="text-xs">Tambah buku</span>
-        </button>
       </div>
     </div>
   )

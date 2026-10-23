@@ -1,8 +1,8 @@
 import { createHashRouter } from 'react-router'
 import RootLayout from '@/layouts/root-layout'
-import AboutPage from '@/pages/about'
 import NotFoundPage from '@/pages/not-found'
 import BooksPage from '@/pages/books'
+import NotesPage from '@/pages/notes'
 
 // Hash router: URLs work under file:// when the app is packaged in Electron.
 export const router = createHashRouter([
@@ -11,7 +11,7 @@ export const router = createHashRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <BooksPage /> },
-      { path: 'about', element: <AboutPage /> },
+      { path: 'notes', element: <NotesPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },
