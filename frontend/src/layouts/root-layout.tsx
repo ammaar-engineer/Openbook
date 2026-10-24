@@ -92,12 +92,12 @@ export default function RootLayout() {
           </div>
 
           <nav className="mt-3 flex-1 space-y-0.5 overflow-y-auto px-2">
-            <NavItem to="/stars" label="Stars" icon={SparklesIcon} />
+            <NavItem to="/ask-ai" label="Ask AI" icon={SparklesIcon} />
             <SectionLabel>Library</SectionLabel>
-            <NavItem to="/" label="Books" icon={BookOpenIcon} badge={24} />
+            <NavItem to="/" label="Books" icon={BookOpenIcon} />
             <NavItem to="/notes" label="Notes" icon={StickyNoteIcon} />
             <NavItem to="/quizzes" label="Quizzes" icon={ListChecksIcon} />
-            <SectionLabel>Workspace</SectionLabel>
+            <SectionLabel>Settings</SectionLabel>
             <NavItem to="/agents" label="Agents" icon={BotIcon} />
             <NavItem to="/settings" label="Settings" icon={SettingsIcon} />
           </nav>
