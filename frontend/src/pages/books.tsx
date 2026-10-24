@@ -7,21 +7,21 @@ const books: Book[] = [
     title: 'Sang Penjaga Waktu',
     description: 'Sebuah kisah tentang waktu yang tak pernah benar-benar berhenti.',
     date: '12 Jan 2025',
-    pages: 248,
+    chapters: 8,
     icon: BookOpenIcon,
   },
   {
     title: 'Ruang Sunyi',
     description: 'Catatan sunyi dari sebuah kota yang tak pernah benar-benar tidur.',
     date: '4 Feb 2025',
-    pages: 184,
+    chapters: 5,
     icon: BookOpenIcon,
   },
   {
     title: 'Kode Nusantara',
     description: 'Menelusuri jejak algoritma kuno di jalur rempah kepulauan.',
     date: '18 Feb 2025',
-    pages: 312,
+    chapters: 12,
     icon: BookOpenIcon,
   },
   {
@@ -29,7 +29,7 @@ const books: Book[] = [
     description:
       'Letters from a winter that lasted far longer than anyone expected.',
     date: '2 Mar 2025',
-    pages: 208,
+    chapters: 7,
     icon: BookOpenIcon,
   },
   {
@@ -37,28 +37,28 @@ const books: Book[] = [
     description:
       'Maps of places that only ever existed on folded sheets of paper.',
     date: '21 Mar 2025',
-    pages: 208,
+    chapters: 6,
     icon: BookOpenIcon,
   },
   {
     title: 'Merah di Ujung Senja',
     description: 'Kisah sebuah keluarga di batas antara senja dan malam.',
     date: '9 Apr 2025',
-    pages: 264,
+    chapters: 9,
     icon: BookOpenIcon,
   },
   {
     title: 'Lautan Kata',
     description: 'Esai-esai pendek tentang bahasa, jarak, dan kehilangan.',
     date: '27 Apr 2025',
-    pages: 156,
+    chapters: 4,
     icon: BookOpenIcon,
   },
   {
     title: 'Aroma Hujan',
     description: 'Memoar tentang rumah, hujan, dan hal-hal yang tinggal.',
     date: '5 Mei 2025',
-    pages: 232,
+    chapters: 3,
     icon: BookOpenIcon,
   },
 ]

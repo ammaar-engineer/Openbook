@@ -71,9 +71,9 @@ export default function RootLayout() {
           </div>
 
           <nav className="mt-3 flex-1 space-y-0.5 overflow-y-auto px-2">
-            <NavItem to="/ask-ai" label="Ask AI" icon={SparklesIcon} />
+            <NavItem to="/" label="Ask AI" icon={SparklesIcon} />
             <SectionLabel>Library</SectionLabel>
-            <NavItem to="/" label="Books" icon={BookOpenIcon} />
+            <NavItem to="/book" label="Books" icon={BookOpenIcon} />
             <NavItem to="/notes" label="Notes" icon={StickyNoteIcon} />
             <NavItem to="/quizzes" label="Quizzes" icon={ListChecksIcon} />
             <SectionLabel>Settings</SectionLabel>
@@ -82,19 +82,6 @@ export default function RootLayout() {
           </nav>
 
           <div className="space-y-2 p-3">
-            <div className="rounded-lg p-3 ring-1 ring-foreground/10">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-muted-foreground">Reading goal</span>
-                <span className="text-muted-foreground">18/24</span>
-              </div>
-              <div className="mt-2 h-1 overflow-hidden rounded-full bg-muted">
-                <div className="h-full w-3/4 rounded-full bg-foreground" />
-              </div>
-              <p className="mt-2 text-[11px] text-muted-foreground">
-                6 books to go
-              </p>
-            </div>
-
             <button
               type="button"
               className="flex w-full items-center gap-2 rounded-lg p-2 text-left ring-1 ring-foreground/10 transition-colors hover:bg-accent"
@@ -104,7 +91,6 @@ export default function RootLayout() {
               </Avatar>
               <div className="min-w-0 flex-1 text-xs leading-tight">
                 <p className="truncate font-medium">Amarix</p>
-                <p className="truncate text-muted-foreground">Free plan</p>
               </div>
               <ChevronDownIcon className="size-3.5 text-muted-foreground" />
             </button>

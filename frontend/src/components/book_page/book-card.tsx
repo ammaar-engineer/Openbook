@@ -5,7 +5,7 @@ export type Book = {
   title: string
   description: string
   date: string
-  pages: number
+  chapters: number
   icon: ComponentType<{ className?: string }>
 }
 
@@ -29,7 +29,7 @@ export function BookCard({ book }: { book: Book }) {
 
       <div className="flex items-center justify-between border-t border-border/60 pt-3 text-[11px] text-muted-foreground">
         <span>{book.date}</span>
-        <span>{book.pages} pages</span>
+        <span>{book.chapters} chapters</span>
       </div>
     </Card>
   )

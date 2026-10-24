@@ -11,9 +11,9 @@ export const router = createHashRouter([
     path: '/',
     element: <RootLayout />,
     children: [
-      { index: true, element: <BooksPage /> },
+      { index: true, element: <AskAiPage /> },
       { path: 'notes', element: <NotesPage /> },
-      { path: 'ask-ai', element: <AskAiPage /> },
+      { path: 'book', element: <BooksPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },
