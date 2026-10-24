@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { BookOpenIcon } from 'lucide-react'
 import { BookCard, type Book } from '@/components/book_page/book-card'
 import { BooksHeader } from '@/components/book_page/books-header'
+import type { NewBookInput } from '@/components/book_page/dialogs/create-book-dialog'
 
-const books: Book[] = [
+const initialBooks: Book[] = [
   {
     title: 'Sang Penjaga Waktu',
     description: 'Sebuah kisah tentang waktu yang tak pernah benar-benar berhenti.',
@@ -63,10 +65,33 @@ const books: Book[] = [
   },
 ]
 
+function formatToday() {
+  return new Date().toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  })
+}
+
 export default function BooksPage() {
+  const [books, setBooks] = useState<Book[]>(initialBooks)
+
+  function handleCreateBook({ title, description }: NewBookInput) {
+    setBooks((prev) => [
+      {
+        title,
+        description,
+        date: formatToday(),
+        chapters: 0,
+        icon: BookOpenIcon,
+      },
+      ...prev,
+    ])
+  }
+
   return (
     <div className="mx-auto max-w-6xl p-6">
-      <BooksHeader count={books.length} />
+      <BooksHeader count={books.length} onCreate={handleCreateBook} />
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {books.map((book) => (

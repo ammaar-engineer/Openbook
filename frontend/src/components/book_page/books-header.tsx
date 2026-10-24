@@ -1,4 +1,4 @@
-import { ChevronDownIcon, PlusIcon, SearchIcon } from 'lucide-react'
+import { ChevronDownIcon, SearchIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -7,8 +7,18 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
+import {
+  CreateBookDialog,
+  type NewBookInput,
+} from '@/components/book_page/dialogs/create-book-dialog'
 
-export function BooksHeader({ count }: { count: number }) {
+export function BooksHeader({
+  count,
+  onCreate,
+}: {
+  count: number
+  onCreate: (book: NewBookInput) => void
+}) {
   return (
     <header className="flex flex-wrap items-start justify-between gap-3 pb-5">
       <div>
@@ -36,10 +46,7 @@ export function BooksHeader({ count }: { count: number }) {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <Button className="bg-foreground text-background hover:bg-foreground/90">
-          <PlusIcon />
-          Buat Buku
-        </Button>
+        <CreateBookDialog onCreate={onCreate} />
       </div>
     </header>
   )

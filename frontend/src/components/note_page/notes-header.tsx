@@ -1,4 +1,4 @@
-import { ChevronDownIcon, PlusIcon, SearchIcon } from 'lucide-react'
+import { ChevronDownIcon, SearchIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -7,8 +7,18 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
+import {
+  CreateNoteDialog,
+  type NewNoteInput,
+} from '@/components/note_page/dialogs/create-note-dialog'
 
-export function NotesHeader({ count }: { count: number }) {
+export function NotesHeader({
+  count,
+  onCreate,
+}: {
+  count: number
+  onCreate: (note: NewNoteInput) => void
+}) {
   return (
     <header className="flex flex-wrap items-start justify-between gap-3 pb-4">
       <div>
@@ -36,10 +46,7 @@ export function NotesHeader({ count }: { count: number }) {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <Button className="bg-foreground text-background hover:bg-foreground/90">
-          <PlusIcon />
-          Catatan Baru
-        </Button>
+        <CreateNoteDialog onCreate={onCreate} />
       </div>
     </header>
   )
