@@ -11,6 +11,8 @@ import {
   CreateBookDialog,
   type NewBookInput,
 } from '@/components/book_page/dialogs/create-book-dialog'
+import { revealIn } from '@/lib/motion'
+import { cn } from '@/lib/utils'
 
 export function BooksHeader({
   count,
@@ -20,7 +22,12 @@ export function BooksHeader({
   onCreate: (book: NewBookInput) => void
 }) {
   return (
-    <header className="flex flex-wrap items-start justify-between gap-3 pb-5">
+    <header
+      className={cn(
+        'flex flex-wrap items-start justify-between gap-3 pb-5',
+        revealIn,
+      )}
+    >
       <div>
         <h1 className="text-lg font-semibold">Semua Buku</h1>
         <p className="text-xs text-muted-foreground">{count} buku</p>

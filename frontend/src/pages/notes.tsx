@@ -97,10 +97,11 @@ export default function NotesPage() {
       <NotesHeader count={notes.length} onCreate={handleCreateNote} />
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {notes.map((note) => (
+        {notes.map((note, index) => (
           <NoteCard
             key={note.id}
             note={note}
+            index={index}
             onOpen={() => setActiveNoteId(note.id)}
             onDelete={() => handleDeleteNote(note.id)}
           />

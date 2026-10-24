@@ -11,6 +11,8 @@ import {
   CreateNoteDialog,
   type NewNoteInput,
 } from '@/components/note_page/dialogs/create-note-dialog'
+import { revealIn } from '@/lib/motion'
+import { cn } from '@/lib/utils'
 
 export function NotesHeader({
   count,
@@ -20,7 +22,12 @@ export function NotesHeader({
   onCreate: (note: NewNoteInput) => void
 }) {
   return (
-    <header className="flex flex-wrap items-start justify-between gap-3 pb-4">
+    <header
+      className={cn(
+        'flex flex-wrap items-start justify-between gap-3 pb-4',
+        revealIn,
+      )}
+    >
       <div>
         <h1 className="text-lg font-semibold">Semua Catatan</h1>
         <p className="text-xs text-muted-foreground">{count} catatan</p>

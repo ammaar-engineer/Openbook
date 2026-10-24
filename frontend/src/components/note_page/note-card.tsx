@@ -1,6 +1,8 @@
 import { StickyNoteIcon, Trash2Icon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
+import { revealDelay, revealIn } from '@/lib/motion'
 
 export type Note = {
   id: string
@@ -19,10 +21,12 @@ function formatCreatedAt(value: string) {
 
 export function NoteCard({
   note,
+  index = 0,
   onOpen,
   onDelete,
 }: {
   note: Note
+  index?: number
   onOpen: () => void
   onDelete: () => void
 }) {
@@ -40,7 +44,11 @@ export function NoteCard({
           onOpen()
         }
       }}
-      className="cursor-pointer gap-2 px-4 transition-colors outline-none hover:bg-accent/50 focus-visible:ring-2 focus-visible:ring-ring"
+      className={cn(
+        'cursor-pointer gap-2 px-4 transition-[background-color,transform] outline-none hover:-translate-y-0.5 hover:bg-accent/50 focus-visible:ring-2 focus-visible:ring-ring',
+        revealIn,
+      )}
+      style={revealDelay(index)}
     >
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-2">
