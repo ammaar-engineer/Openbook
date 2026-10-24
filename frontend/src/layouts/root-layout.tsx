@@ -4,19 +4,15 @@ import {
   BookOpenIcon,
   BotIcon,
   ChevronDownIcon,
-  CommandIcon,
   FeatherIcon,
   ListChecksIcon,
   PanelLeftIcon,
-  PlusIcon,
-  SearchIcon,
   SettingsIcon,
   SparklesIcon,
   StickyNoteIcon,
 } from 'lucide-react'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { Toaster } from '@/components/ui/sonner'
 import { cn } from '@/lib/utils'
@@ -67,27 +63,10 @@ export default function RootLayout() {
               <div className="flex size-7 items-center justify-center rounded-md bg-foreground text-background">
                 <FeatherIcon className="size-4" />
               </div>
-              <span className="text-sm font-semibold">Quill</span>
+              <span className="text-sm font-semibold">Openbook</span>
             </div>
             <Button variant="ghost" size="icon-sm" aria-label="Toggle sidebar">
               <PanelLeftIcon />
-            </Button>
-          </div>
-
-          <div className="px-3 pt-3">
-            <div className="relative">
-              <SearchIcon className="pointer-events-none absolute top-1/2 left-2 size-3.5 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Search books..."
-                className="h-8 pr-10 pl-7 text-xs"
-              />
-              <kbd className="pointer-events-none absolute top-1/2 right-1.5 flex -translate-y-1/2 items-center gap-0.5 rounded border px-1 py-0.5 text-[10px] text-muted-foreground">
-                <CommandIcon className="size-2.5" />K
-              </kbd>
-            </div>
-            <Button className="mt-2 w-full bg-foreground text-background hover:bg-foreground/90">
-              <PlusIcon />
-              New Book
             </Button>
           </div>
 
