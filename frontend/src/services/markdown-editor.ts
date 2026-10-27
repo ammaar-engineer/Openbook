@@ -8,6 +8,8 @@ import {
   markdownStylePlugin,
   mouseSelectingField,
   setMouseSelecting,
+  mathPlugin,
+  blockMathField
 } from 'codemirror-live-markdown'
 
 export type MarkdownEditorOptions = {
@@ -39,6 +41,8 @@ export function createMarkdownEditor({
       doc,
       extensions: [
         markdown(),
+        mathPlugin,
+        blockMathField,
         collapseOnSelectionFacet.of(true),
         mouseSelectingField,
         livePreviewPlugin,

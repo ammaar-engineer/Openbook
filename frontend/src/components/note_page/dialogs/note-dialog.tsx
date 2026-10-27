@@ -31,7 +31,7 @@ export function NoteDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-200">
         {note && (
           <NoteDialogBody
             key={note.id}
@@ -106,7 +106,7 @@ function NoteDialogBody({
           placeholder="Nama catatan"
           aria-invalid={error ? true : undefined}
           autoFocus
-          className="h-auto rounded-none border-0 bg-transparent px-0 py-0 text-base leading-snug font-medium focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent"
+          className="h-auto rounded-none border-0 bg-transparent px-0 py-0 text-[1.9em] leading-snug font-medium focus-visible:ring-0 aria-invalid:ring-0 md:text-[1.9em] dark:bg-transparent"
         />
 
         <div
