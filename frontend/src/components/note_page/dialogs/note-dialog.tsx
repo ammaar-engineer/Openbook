@@ -1,18 +1,16 @@
-import { useState, type FormEvent } from 'react'
-import { PencilIcon } from 'lucide-react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
 import type { Note } from '@/components/note_page/note-card'
+import { createMarkdownEditor } from '@/services/markdown-editor'
 
 export type NoteValues = {
   title: string
@@ -30,11 +28,17 @@ export function NoteDialog({
   onOpenChange: (open: boolean) => void
   onSave: (values: NoteValues) => void
 }) {
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         {note && (
-          <NoteDialogBody key={note.id} note={note} onSave={onSave} />
+          <NoteDialogBody
+            key={note.id}
+            note={note}
+            onSave={onSave}
+            onClose={() => onOpenChange(false)}
+          />
         )}
       </DialogContent>
     </Dialog>
@@ -44,26 +48,32 @@ export function NoteDialog({
 function NoteDialogBody({
   note,
   onSave,
+  onClose,
 }: {
   note: Note
   onSave: (values: NoteValues) => void
+  onClose: () => void
 }) {
-  const [editing, setEditing] = useState(false)
   const [title, setTitle] = useState(note.title)
-  const [body, setBody] = useState(note.body)
   const [error, setError] = useState<string | null>(null)
 
-  function startEditing() {
-    setTitle(note.title)
-    setBody(note.body)
-    setError(null)
-    setEditing(true)
-  }
+  const editorContainer = useRef<HTMLDivElement>(null)
+  const body = useRef(note.body)
 
-  function cancelEditing() {
-    setError(null)
-    setEditing(false)
-  }
+  useEffect(() => {
+    const parent = editorContainer.current
+    if (!parent) return
+
+    const editor = createMarkdownEditor({
+      parent,
+      doc: body.current,
+      onChange: (value) => {
+        body.current = value
+      },
+    })
+
+    return () => editor.destroy()
+  }, [])
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -75,34 +85,15 @@ function NoteDialogBody({
       return
     }
 
-    onSave({ title: trimmedTitle, body })
-    setEditing(false)
-  }
-
-  if (!editing) {
-    return (
-      <>
-        <DialogHeader>
-          <DialogTitle>{note.title}</DialogTitle>
-          <DialogDescription className="max-h-72 overflow-y-auto text-sm leading-relaxed whitespace-pre-wrap text-muted-foreground">
-            {note.body.trim() || 'Belum ada isi catatan.'}
-          </DialogDescription>
-        </DialogHeader>
-
-        <DialogFooter>
-          <DialogClose render={<Button variant="outline" />}>Tutup</DialogClose>
-          <Button onClick={startEditing} autoFocus>
-            <PencilIcon />
-            Edit
-          </Button>
-        </DialogFooter>
-      </>
-    )
+    onSave({ title: trimmedTitle, body: body.current })
+    onClose()
   }
 
   return (
     <>
-      <DialogTitle className="sr-only">Edit catatan</DialogTitle>
+      <DialogHeader>
+        <DialogTitle className="sr-only">Edit catatan</DialogTitle>
+      </DialogHeader>
 
       <form id="edit-note-form" onSubmit={handleSubmit} className="grid gap-2">
         <Input
@@ -118,13 +109,10 @@ function NoteDialogBody({
           className="h-auto rounded-none border-0 bg-transparent px-0 py-0 text-base leading-snug font-medium focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent"
         />
 
-        <Textarea
+        <div
+          ref={editorContainer}
           aria-label="Isi catatan"
-          value={body}
-          onChange={(event) => setBody(event.target.value)}
-          placeholder="Tulis isi catatan di sini..."
-          rows={1}
-          className="field-sizing-content max-h-72 min-h-0 resize-none overflow-y-auto rounded-none border-0 bg-transparent px-0 py-0 text-sm leading-relaxed text-muted-foreground focus-visible:ring-0 dark:bg-transparent"
+          className="max-h-72 min-h-16 overflow-y-auto text-sm leading-relaxed"
         />
 
         {error && (
@@ -135,9 +123,9 @@ function NoteDialogBody({
       </form>
 
       <DialogFooter>
-        <Button variant="outline" type="button" onClick={cancelEditing}>
+        <DialogClose render={<Button variant="outline" type="button" />}>
           Batal
-        </Button>
+        </DialogClose>
         <Button type="submit" form="edit-note-form">
           Simpan
         </Button>
