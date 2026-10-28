@@ -40,7 +40,7 @@ function prefixLine(view: EditorView, prefix: string) {
 export const tools: Tool[] = [
   { label: 'Bold', icon: BoldIcon, run: (v) => wrapSelection(v, '**') },
   { label: 'Italic', icon: ItalicIcon, run: (v) => wrapSelection(v, '*') },
-  { label: 'Underline', icon: UnderlineIcon, run: (v) => wrapSelection(v, '<u>', '</u>') },
+  // { label: 'Underline', icon: UnderlineIcon, run: (v) => wrapSelection(v, '<u>', '</u>') },
   { label: 'Strikethrough', icon: StrikethroughIcon, run: (v) => wrapSelection(v, '~~') },
   { label: 'Heading 1', icon: Heading1Icon, run: (v) => prefixLine(v, '# ') },
   { label: 'Heading 2', icon: Heading2Icon, run: (v) => prefixLine(v, '## ') },

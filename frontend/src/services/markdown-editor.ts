@@ -44,16 +44,8 @@ export function createMarkdownEditor({
     state: EditorState.create({
       doc,
       extensions: [
-        markdown({
-          base: markdownLanguage,
-          codeLanguages: [
-            LanguageDescription.of({ // harus dibenerin nih buat fitur underline. Atau ada solusi lain
-              name: 'html',
-              alias: ['html', 'HTML'],
-              support: html(),
-            })
-          ]
-        }),
+        markdown(),
+        html(),
         mathPlugin,
         blockMathField,
         collapseOnSelectionFacet.of(true),
