@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { RouterProvider } from 'react-router/dom'
+import { ThemeProvider } from 'next-themes'
 import { router } from './router'
 import './index.css'
 import 'katex/dist/katex.min.css';
@@ -14,6 +15,8 @@ if (typeof window !== 'undefined') {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>,
 )

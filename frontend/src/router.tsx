@@ -7,6 +7,7 @@ import NotesPage from '@/pages/notes'
 import QuizzesPage from '@/pages/quizzes'
 import AskAiPage from '@/pages/ask-ai'
 import BookEditorPage from '@/pages/book-editor'
+import SettingsPage from '@/pages/settings'
 
 // Hash router: URLs work under file:// when the app is packaged in Electron.
 export const router = createHashRouter([
@@ -18,6 +19,7 @@ export const router = createHashRouter([
       { path: 'notes', element: <NotesPage /> },
       { path: 'book', element: <BooksPage /> },
       { path: 'quizzes', element: <QuizzesPage /> },
+      { path: 'settings', element: <SettingsPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

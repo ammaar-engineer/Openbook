@@ -1,6 +1,7 @@
 import { EditorState } from '@codemirror/state'
 import { markdown } from '@codemirror/lang-markdown'
-import { EditorView } from '@codemirror/view'
+import { EditorView, keymap } from '@codemirror/view'
+import { defaultKeymap, history, historyKeymap } from '@codemirror/commands'
 import {
   collapseOnSelectionFacet,
   editorTheme,
@@ -60,6 +61,8 @@ export function createMarkdownEditor({
         livePreviewPlugin,
         markdownStylePlugin,
         editorTheme,
+        history(),
+        keymap.of([...historyKeymap, ...defaultKeymap]),
         EditorView.lineWrapping,
         EditorView.updateListener.of((update) => {
           if (update.docChanged) onChange?.(update.state.doc.toString())
