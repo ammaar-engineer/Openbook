@@ -11,6 +11,9 @@ import {
   mathPlugin,
   blockMathField
 } from 'codemirror-live-markdown'
+import {html} from '@codemirror/lang-html'
+import {LanguageDescription} from '@codemirror/language'
+import {markdownLanguage} from '@codemirror/lang-markdown'
 
 export type MarkdownEditorOptions = {
   /** Element that will host the editor DOM. */
@@ -40,7 +43,16 @@ export function createMarkdownEditor({
     state: EditorState.create({
       doc,
       extensions: [
-        markdown(),
+        markdown({
+          base: markdownLanguage,
+          codeLanguages: [
+            LanguageDescription.of({ // harus dibenerin nih buat fitur underline. Atau ada solusi lain
+              name: 'html',
+              alias: ['html', 'HTML'],
+              support: html(),
+            })
+          ]
+        }),
         mathPlugin,
         blockMathField,
         collapseOnSelectionFacet.of(true),

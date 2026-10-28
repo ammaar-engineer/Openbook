@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 import { BookOpenIcon } from 'lucide-react'
 import { BookCard, type Book } from '@/components/book_page/book-card'
 import { BooksHeader } from '@/components/book_page/books-header'
@@ -95,7 +96,13 @@ export default function BooksPage() {
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {books.map((book, index) => (
-          <BookCard key={book.title} book={book} index={index} />
+          <Link
+            key={book.title}
+            to="/book/editor"
+            className="block rounded-xl outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+          >
+            <BookCard book={book} index={index} />
+          </Link>
         ))}
       </div>
     </div>
