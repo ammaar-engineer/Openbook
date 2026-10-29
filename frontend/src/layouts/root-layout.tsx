@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { Toaster } from '@/components/ui/sonner'
 import { cn } from '@/lib/utils'
+import { ROUTES } from '@/lib/routes'
 
 type NavItemProps = {
   to: string
@@ -28,7 +29,7 @@ function NavItem({ to, label, icon: Icon, badge }: NavItemProps) {
   return (
     <NavLink
       to={to}
-      end={to === '/'}
+      end={to === ROUTES.askAi}
       className={({ isActive }) =>
         cn(
           'flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground',
@@ -71,14 +72,14 @@ export default function RootLayout() {
           </div>
 
           <nav className="mt-3 flex-1 space-y-0.5 overflow-y-auto px-2">
-            <NavItem to="/" label="Ask AI" icon={SparklesIcon} />
+            <NavItem to={ROUTES.askAi} label="Ask AI" icon={SparklesIcon} />
             <SectionLabel>Library</SectionLabel>
-            <NavItem to="/book" label="Books" icon={BookOpenIcon} />
-            <NavItem to="/notes" label="Notes" icon={StickyNoteIcon} />
-            <NavItem to="/quizzes" label="Quizzes" icon={ListChecksIcon} />
+            <NavItem to={ROUTES.books} label="Books" icon={BookOpenIcon} />
+            <NavItem to={ROUTES.notes} label="Notes" icon={StickyNoteIcon} />
+            <NavItem to={ROUTES.quizzes} label="Quizzes" icon={ListChecksIcon} />
             <SectionLabel>Settings</SectionLabel>
-            <NavItem to="/agents" label="Agents" icon={BotIcon} />
-            <NavItem to="/settings" label="Settings" icon={SettingsIcon} />
+            <NavItem to={ROUTES.agents} label="Agents" icon={BotIcon} />
+            <NavItem to={ROUTES.settings} label="Settings" icon={SettingsIcon} />
           </nav>
 
           <div className="space-y-2 p-3">

@@ -13,8 +13,6 @@ import {
   blockMathField
 } from 'codemirror-live-markdown'
 import {html} from '@codemirror/lang-html'
-import {LanguageDescription} from '@codemirror/language'
-import {markdownLanguage} from '@codemirror/lang-markdown'
 
 export type MarkdownEditorOptions = {
   /** Element that will host the editor DOM. */

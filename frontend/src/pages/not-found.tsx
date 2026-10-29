@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import { cn } from '@/lib/utils'
 import { revealDelay, revealIn } from '@/lib/motion'
+import { ROUTES } from '@/lib/routes'
 
 export default function NotFoundPage() {
   return (
@@ -18,7 +19,7 @@ export default function NotFoundPage() {
         This page does not exist.
       </p>
       <Link
-        to="/"
+        to={ROUTES.askAi}
         className={cn(
           'inline-block text-primary underline underline-offset-4',
           revealIn,

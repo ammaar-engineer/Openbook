@@ -9,7 +9,6 @@ import {
   ListIcon,
   QuoteIcon,
   StrikethroughIcon,
-  UnderlineIcon,
 } from 'lucide-react'
 
 export type Tool = {

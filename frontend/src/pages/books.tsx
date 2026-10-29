@@ -4,6 +4,7 @@ import { BookOpenIcon } from 'lucide-react'
 import { BookCard, type Book } from '@/components/book_page/book-card'
 import { BooksHeader } from '@/components/book_page/books-header'
 import type { NewBookInput } from '@/components/book_page/dialogs/create-book-dialog'
+import { ROUTES } from '@/lib/routes'
 
 const initialBooks: Book[] = [
   {
@@ -98,7 +99,7 @@ export default function BooksPage() {
         {books.map((book, index) => (
           <Link
             key={book.title}
-            to="/book/editor"
+            to={ROUTES.bookEditor}
             className="block rounded-xl outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           >
             <BookCard book={book} index={index} />

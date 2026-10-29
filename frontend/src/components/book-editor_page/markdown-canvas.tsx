@@ -9,8 +9,8 @@ export function MarkdownCanvas({
   editorRef: RefObject<HTMLDivElement | null>
 }) {
   return (
-    <div className="min-w-0 flex-1 overflow-y-auto">
-      <div className="mx-auto min-h-full max-w-[720px] rounded-sm bg-card px-14 py-12 shadow-2xl ring-1 ring-foreground/10">
+    <div className="min-h-0 min-w-0 flex-1 overflow-y-auto">
+      <div className="min-h-full rounded-sm bg-card px-6 py-10 shadow-2xl ring-1 ring-foreground/10 md:px-10 lg:px-14 lg:py-12">
         <p className="pb-6 text-[10px] tracking-[0.25em] uppercase">
           {title}
         </p>

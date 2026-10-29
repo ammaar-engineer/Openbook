@@ -7,6 +7,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { tools, type Tool } from '@/components/book-editor_page/format-tools'
+import { ROUTES } from '@/lib/routes'
 
 type EditorHeaderProps = {
   title: string
@@ -21,7 +22,7 @@ export function EditorHeader({
 }: EditorHeaderProps) {
   return (
     <header className="flex flex-wrap items-center gap-2 border-b border-border/60 px-3 py-2">
-      <Link to="/book">
+      <Link to={ROUTES.books}>
         <Button variant="ghost" size="icon-sm" aria-label="Back">
           <ChevronsLeftIcon />
         </Button>
