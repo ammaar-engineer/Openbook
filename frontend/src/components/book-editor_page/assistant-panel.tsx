@@ -60,7 +60,6 @@ export function AssistantPanel({ onClose }: { onClose: () => void }) {
         >
           <TabsTrigger value="chat">AI Chat</TabsTrigger>
           <TabsTrigger value="notes">Notes</TabsTrigger>
-          <TabsTrigger value="comments">Comments</TabsTrigger>
         </TabsList>
 
         <TabsContent value="chat" className="flex min-h-0 flex-1 flex-col gap-2">
