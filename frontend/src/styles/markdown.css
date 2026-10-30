@@ -1,0 +1,125 @@
+/* live-preview markdown rendered as a printed book page */
+.book-page .cm-editor {
+  height: auto;
+  background: transparent;
+  outline: none;
+}
+.book-page .cm-content {
+  padding: 0;
+  font-family: inherit;
+  font-size: 15px;
+  caret-color: var(--foreground);
+}
+.book-page .cm-line {
+  padding: 0;
+  line-height: 1.9;
+  color: var(--card-foreground);
+}
+/* Headings: one readable scale, so # always reads as the loudest level.
+   The heading classes sit on inline spans, hence the extra .cm-content in the
+   selectors (also enough specificity to beat the package's bundled theme). */
+.book-page .cm-content .cm-header-1,
+.book-page .cm-content .cm-header-2,
+.book-page .cm-content .cm-header-3,
+.book-page .cm-content .cm-header-4,
+.book-page .cm-content .cm-header-5,
+.book-page .cm-content .cm-header-6 {
+  color: var(--foreground);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.book-page .cm-content .cm-header-1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.book-page .cm-content .cm-header-2 {
+  font-size: 1.45rem;
+  line-height: 1.3;
+}
+.book-page .cm-content .cm-header-3 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+.book-page .cm-content .cm-header-4 {
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.book-page .cm-content .cm-header-5 {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.book-page .cm-content .cm-header-6 {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+/* Inline marks can't create vertical rhythm, so space the heading lines. */
+.book-page .cm-line:has(.cm-header-1) {
+  padding-top: 1.6rem;
+  padding-bottom: 0.5rem;
+}
+.book-page .cm-line:has(.cm-header-2) {
+  padding-top: 1.2rem;
+  padding-bottom: 0.4rem;
+}
+.book-page .cm-line:has(.cm-header-3) {
+  padding-top: 0.9rem;
+  padding-bottom: 0.3rem;
+}
+.book-page .cm-line:has(.cm-header-4),
+.book-page .cm-line:has(.cm-header-5),
+.book-page .cm-line:has(.cm-header-6) {
+  padding-top: 0.7rem;
+  padding-bottom: 0.2rem;
+}
+.book-page .cm-line:first-child:has([class*="cm-header-"]) {
+  padding-top: 0;
+}
+.book-page .cm-strong {
+  color: var(--foreground);
+  font-weight: 700;
+}
+.book-page .cm-code {
+  background: var(--muted);
+  color: var(--foreground);
+  font-family: ui-monospace, monospace;
+}
+
+/* Math (KaTeX): rendered larger than body text so formulas stay legible.
+   Inline math is written as `$...$` in backticks, block math as a ```math fence. */
+.book-page .cm-content .cm-math-inline {
+  font-size: 1.15em;
+  padding: 0 0.1em;
+}
+.book-page .cm-content .cm-math-block {
+  padding: 0.6rem 0;
+  font-size: 1.3em;
+  line-height: 1.5;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.book-page .cm-content .cm-math-block .katex-display {
+  margin: 0;
+}
+.book-page .cm-content .cm-math-source {
+  font-size: 0.95em;
+}
+.book-page .cm-content .cm-math-error {
+  font-size: 0.9em;
+  color: var(--destructive);
+}
+.book-page .cm-formatting-inline,
+.book-page .cm-formatting-block {
+  color: var(--muted-foreground);
+}
+.book-page .cm-selectionBackground,
+.book-page.cm-focused .cm-selectionBackground,
+.book-page .cm-focused .cm-selectionBackground {
+  background: color-mix(in oklab, var(--ring) 30%, transparent) !important;
+}
